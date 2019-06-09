@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as styles from './index.scss';
 
-export const Main = () => (
+const Main = () => (
   <div className={styles.mainBlock}>
     TypeScript
   </div>
 );
+
+export default Main;
