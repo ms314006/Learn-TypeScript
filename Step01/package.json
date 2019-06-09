@@ -1,0 +1,17 @@
+{
+  "name": "Learn_TypeScript_Step01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc-init": "tsc --init",
+    "tsc": "tsc index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "npm": "^6.9.0",
+    "typescript": "^3.5.1"
+  }
+}
