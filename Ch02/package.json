@@ -13,7 +13,8 @@
     "tsm-src": "tsm src",
     "test": "jest",
     "test-cover": "jest --coverage",
-    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "eslint": "eslint src --ext .ts,.tsx"
   },
   "repository": {
     "type": "git",
