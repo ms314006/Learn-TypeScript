@@ -1,4 +1,5 @@
 module.exports = {
+  parser: 'typescript-eslint-parser',
   env: {
     browser: true,
     es6: true,
@@ -18,6 +19,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    'typescript',
   ],
   rules: {
     'comma-dangle': ['error', {
@@ -44,5 +46,5 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': ['off'],
     'import/extensions': ['warn', 'always'],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
-},
+  }
 };
