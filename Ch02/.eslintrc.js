@@ -21,6 +21,13 @@ module.exports = {
     'react',
     'typescript',
   ],
+  settings: {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
   rules: {
     'comma-dangle': ['error', {
       arrays: 'never',
@@ -35,16 +42,16 @@ module.exports = {
     'comma-spacing': ['error', { 'before': false, 'after': true }],
     quotes: ['error','single'],
     'no-underscore-dangle': ['off'],
-    'react/prop-types': ['warn'],
+    'react/prop-types': ['error'],
     'no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
     'padded-blocks': ['warn', { 'blocks': 'never' }],
     'react/no-unused-state': ['off'],
     'max-len': ['off'],
     'no-empty-pattern': ['off'],
     'react/jsx-no-bind': ['error', {'allowBind': true, 'allowArrowFunctions': true}],
-    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx', '.tsx'] }],
     'jsx-a11y/no-static-element-interactions': ['off'],
-    'import/extensions': ['warn', 'always'],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    'import/extensions': ["error", "never", { packages: "never" }],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
   }
 };
