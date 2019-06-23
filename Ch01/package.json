@@ -1,17 +1,23 @@
 {
-  "name": "Learn_TypeScript_Step01",
+  "name": "Ch01",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc-init": "tsc --init",
-    "tsc": "tsc index.ts"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "npm": "^6.9.0",
-    "typescript": "^3.5.1"
+  "devDependencies": {
+    "@typescript-eslint/parser": "^1.10.2",
+    "eslint": "^5.15.2",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-typescript": "^0.14.0",
+    "typescript": "^3.5.2",
+    "typescript-eslint-parser": "^22.0.0"
   }
 }

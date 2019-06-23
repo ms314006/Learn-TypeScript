@@ -1,57 +1,56 @@
-interface FlyBehavior {
-  fly(): string;
-}
+class Car {
+  descroption: string;
 
-class FlyWithWings implements FlyBehavior {
-  fly() {
-    return 'I can fly.';
-  }
-}
+  color: string;
 
-class FlyNoWay implements FlyBehavior {
-  fly() {
-    return 'I can‘t fly.';
-  }
-}
+  protected brakes: string;
 
-class Duck {
-  flyBehavior: FlyBehavior;
-  constructor(flyBehavior: FlyBehavior) {
-      this.flyBehavior = flyBehavior;
+  constructor(color: string) {
+    this.descroption = '我是車子';
+    this.color = color;
+    this.brakes = '商業機密的煞車方式';
   }
-  quack() {
-    return 'I can quack.';
+
+  public getDescription(): string {
+    return `${this.descroption} - ${this.color}`;
   }
-  swim() {
-    return 'I can swim.';
+
+  public triggerBrakes(): string {
+    if (this.brakes === '商業機密的煞車方式') {
+      return '用了商業機密的煞車方式';
+    }
+    return '沒有機密方式，沒有煞車';
   }
-  performFly() {
-    return this.flyBehavior.fly();
+
+  static getComment(): string {
+    return '這是初代版車子';
   }
 }
 
-class MallardDuck extends Duck {
-  constructor() {
-    super(new FlyWithWings());
+const redCar = new Car('紅色');
+
+console.log(redCar.getDescription()); // 我是車子 - 紅色
+console.log(redCar.triggerBrakes()); // 用機密方式煞車帥一波
+
+class CarII extends Car {
+  public getDescription(): string {
+    return `${super.getDescription()} 第二代強化版`;
   }
-  display() {
-    return 'My color is green.';
+
+  public triggerBrakes(): string {
+    console.log(this.brakes);
+    return `${super.triggerBrakes()} 的無敵改良版`;
+  }
+
+  static getComment(): string {
+    return '這是第二版車子';
   }
 }
 
-class RubberDuck extends Duck {
-  constructor() {
-    super(new FlyNoWay());
-  }
-  display() {
-    return 'I am a toy duck.';
-  }
-}
+const greenCar = new CarII('綠色');
 
-const mallard = new MallardDuck();
-console.log(mallard.display());
-console.log(mallard.performFly());
+console.log(greenCar.getDescription()); // 我是車子 - 綠色 第二代強化版
+console.log(greenCar.triggerBrakes()); // 用了商業機密的煞車方式 的無敵改良版
 
-const rubber = new RubberDuck();
-console.log(rubber.display());
-console.log(rubber.performFly());
+console.log(Car.getComment()); // 這是初代版車子
+console.log(CarII.getComment()); // 這是第二版車子

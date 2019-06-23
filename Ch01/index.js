@@ -11,60 +11,48 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var FlyWithWings = /** @class */ (function () {
-    function FlyWithWings() {
+var Car = /** @class */ (function () {
+    function Car(color) {
+        this.descroption = '我是車子';
+        this.color = color;
+        this.brakes = '商業機密的煞車方式';
     }
-    FlyWithWings.prototype.fly = function () {
-        return 'I can fly.';
+    Car.prototype.getDescription = function () {
+        return this.descroption + " - " + this.color;
     };
-    return FlyWithWings;
+    Car.prototype.triggerBrakes = function () {
+        if (this.brakes === '商業機密的煞車方式') {
+            return '用了商業機密的煞車方式';
+        }
+        return '沒有機密方式，沒有煞車';
+    };
+    Car.getComment = function () {
+        return '這是初代版車子';
+    };
+    return Car;
 }());
-var FlyNoWay = /** @class */ (function () {
-    function FlyNoWay() {
+var redCar = new Car('紅色');
+console.log(redCar.getDescription()); // 我是車子 - 紅色
+console.log(redCar.triggerBrakes()); // 用機密方式煞車帥一波
+var CarII = /** @class */ (function (_super) {
+    __extends(CarII, _super);
+    function CarII() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    FlyNoWay.prototype.fly = function () {
-        return 'I can‘t fly.';
+    CarII.prototype.getDescription = function () {
+        return _super.prototype.getDescription.call(this) + " \u7B2C\u4E8C\u4EE3\u5F37\u5316\u7248";
     };
-    return FlyNoWay;
-}());
-var Duck = /** @class */ (function () {
-    function Duck(flyBehavior) {
-        this.flyBehavior = flyBehavior;
-    }
-    Duck.prototype.quack = function () {
-        return 'I can quack.';
+    CarII.prototype.triggerBrakes = function () {
+        console.log(this.brakes);
+        return _super.prototype.triggerBrakes.call(this) + " \u7684\u7121\u6575\u6539\u826F\u7248";
     };
-    Duck.prototype.swim = function () {
-        return 'I can swim.';
+    CarII.getComment = function () {
+        return '這是第二版車子';
     };
-    Duck.prototype.performFly = function () {
-        return this.flyBehavior.fly();
-    };
-    return Duck;
-}());
-var MallardDuck = /** @class */ (function (_super) {
-    __extends(MallardDuck, _super);
-    function MallardDuck() {
-        return _super.call(this, new FlyWithWings()) || this;
-    }
-    MallardDuck.prototype.display = function () {
-        return 'My color is green.';
-    };
-    return MallardDuck;
-}(Duck));
-var RubberDuck = /** @class */ (function (_super) {
-    __extends(RubberDuck, _super);
-    function RubberDuck() {
-        return _super.call(this, new FlyNoWay()) || this;
-    }
-    RubberDuck.prototype.display = function () {
-        return 'I am a toy duck.';
-    };
-    return RubberDuck;
-}(Duck));
-var mallard = new MallardDuck();
-console.log(mallard.display());
-console.log(mallard.performFly());
-var rubber = new RubberDuck();
-console.log(rubber.display());
-console.log(rubber.performFly());
+    return CarII;
+}(Car));
+var greenCar = new CarII('綠色');
+console.log(greenCar.getDescription()); // 我是車子 - 綠色 第二代強化版
+console.log(greenCar.triggerBrakes()); // 用了商業機密的煞車方式 的無敵改良版
+console.log(Car.getComment()); // 這是初代版車子
+console.log(CarII.getComment()); // 這是第二版車子
