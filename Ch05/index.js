@@ -1,58 +1,53 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var Car = /** @class */ (function () {
-    function Car(color) {
-        this.descroption = '我是車子';
-        this.color = color;
-        this.brakes = '商業機密的煞車方式';
+var Controller = /** @class */ (function () {
+    function Controller() {
     }
-    Car.prototype.getDescription = function () {
-        return this.descroption + " - " + this.color;
+    Controller.accelerate = function (car) {
+        car.addSpeed();
     };
-    Car.prototype.triggerBrakes = function () {
-        if (this.brakes === '商業機密的煞車方式') {
-            return '用了商業機密的煞車方式';
-        }
-        return '沒有機密方式，沒有煞車';
+    Controller.turn = function (car) {
+        car.lightningTurn();
     };
-    Car.getComment = function () {
-        return '這是初代版車子';
-    };
-    return Car;
+    return Controller;
 }());
-var redCar = new Car('紅色');
-console.log(redCar.getDescription()); // 我是車子 - 紅色
-console.log(redCar.triggerBrakes()); // 用機密方式煞車帥一波
-var CarII = /** @class */ (function (_super) {
-    __extends(CarII, _super);
-    function CarII() {
-        return _super !== null && _super.apply(this, arguments) || this;
+// 實作加速型的 Class
+var SpeedCar = /** @class */ (function () {
+    function SpeedCar(name) {
+        this.name = name;
     }
-    CarII.prototype.getDescription = function () {
-        return _super.prototype.getDescription.call(this) + " \u7B2C\u4E8C\u4EE3\u5F37\u5316\u7248";
+    SpeedCar.prototype.addSpeed = function () {
+        console.log(this.name + "\u4F7F\u7528\u300C\u52A0\u901F\u300D\uFF01");
     };
-    CarII.prototype.triggerBrakes = function () {
-        console.log(this.brakes);
-        return _super.prototype.triggerBrakes.call(this) + " \u7684\u7121\u6575\u6539\u826F\u7248";
+    return SpeedCar;
+}());
+// 過彎型
+var TurnCar = /** @class */ (function () {
+    function TurnCar(name) {
+        this.name = name;
+    }
+    TurnCar.prototype.lightningTurn = function () {
+        console.log(this.name + "\u4F7F\u7528\u300C\u9583\u96FB\u8F49\u5F4E\u300D\uFF01");
     };
-    CarII.getComment = function () {
-        return '這是第二版車子';
+    return TurnCar;
+}());
+var AlmightCar = /** @class */ (function () {
+    function AlmightCar(name) {
+        this.name = name;
+    }
+    AlmightCar.prototype.addSpeed = function () {
+        console.log(this.name + "\u4F7F\u7528\u300C\u52A0\u901F\u300D\uFF01");
     };
-    return CarII;
-}(Car));
-var greenCar = new CarII('綠色');
-console.log(greenCar.getDescription()); // 我是車子 - 綠色 第二代強化版
-console.log(greenCar.triggerBrakes()); // 用了商業機密的煞車方式 的無敵改良版
-console.log(Car.getComment()); // 這是初代版車子
-console.log(CarII.getComment()); // 這是第二版車子
+    AlmightCar.prototype.lightningTurn = function () {
+        console.log(this.name + "\u4F7F\u7528\u300C\u9583\u96FB\u8F49\u5F4E\u300D\uFF01");
+    };
+    return AlmightCar;
+}());
+// 加速
+var speedCar = new SpeedCar('QQ 衝鋒');
+Controller.accelerate(speedCar); // 用遙控器將傳入的車子加速
+// 轉彎
+var turnCar = new TurnCar('QQ 眼鏡蛇');
+Controller.turn(turnCar); // 用遙控器使傳入的車子過彎
+// 萬能型
+var almightCar = new AlmightCar('衝鋒眼鏡蛇');
+Controller.accelerate(almightCar); // 用遙控器使傳入的車子加速
+Controller.turn(almightCar); // 用遙控器使傳入的車子過彎
